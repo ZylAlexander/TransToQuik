@@ -1,0 +1,34 @@
+name: Bug report
+description: Сообщить об ошибке
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Описание
+      description: Что произошло и что ожидалось?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Версия TransToQuik / тег
+      placeholder: "1.0.0 или commit hash"
+  - type: input
+    id: environment
+    attributes:
+      label: Окружение
+      placeholder: "Windows 10, .NET 9, QUIK Junior x64"
+  - type: textarea
+    id: repro
+    attributes:
+      label: Шаги воспроизведения
+      placeholder: |
+        1. Connect(...)
+        2. SendTransactionAsync(...)
+        3. ...
+  - type: textarea
+    id: logs
+    attributes:
+      label: Логи / код ошибки
+      description: Без паролей и номеров счетов

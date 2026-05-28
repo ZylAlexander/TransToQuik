@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore TransToQuik.sln
+
+      - name: Build
+        run: dotnet build TransToQuik.sln -c Release --no-restore
+
+      - name: Test
+        run: dotnet test TransToQuik.Tests/TransToQuik.Tests.csproj -c Release --no-build --verbosity normal
+
+      - name: Pack (verify)
+        run: dotnet pack TransToQuik/TransToQuik.csproj -c Release -o ./artifacts
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-package
+          path: ./artifacts/*.nupkg

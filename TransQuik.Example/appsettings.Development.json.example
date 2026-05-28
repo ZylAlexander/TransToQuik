@@ -1,0 +1,11 @@
+{
+  "Quik": {
+    "Path": "C:\\QUIK Junior\\",
+    "ClassCode": "QJSIM",
+    "SecCode": "VTBR",
+    "Account": "NL********",
+    "PlaceDemoOrder": true,
+    "PlaceDemoStopOrder": true,
+    "CancelLastOrder": true
+  }
+}
