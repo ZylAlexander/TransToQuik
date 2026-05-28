@@ -1,0 +1,32 @@
+.vs
+.vscode
+[Bb]in
+[Oo]bj
+Ignore
+*.csproj.user
+*.user
+artifacts/
+
+# Локальная конфигурация примера (может содержать пути и счета)
+TransQuik.Example/appsettings.Development.json
+**/appsettings.*.local.json
+secrets.json
+.env
+.env.*
+!.env.example
+
+# Личные заметки (шаблоны *.example.md и README — в git)
+notes/*
+**/*.local.md
+
+# Нативная DLL из QUIK (копируется локально, не коммитится)
+libs/*.dll
+!libs/.gitkeep
+
+# Rider / VS
+.idea/
+*.suo
+*.ncrunch*
+_ReSharper*/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
