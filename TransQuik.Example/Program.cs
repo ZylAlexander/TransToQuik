@@ -39,6 +39,12 @@ var newOrderResult = default(QuikAsyncTransactionResult);
 var lastResult = default(QuikAsyncTransactionResult);
 var hasNewOrderResult = false;
 
+client.SubscribeOrders(builder => builder.Add(options.ClassCode, options.SecCode));
+client.StartOrders(new OrderHandler());
+
+client.SubscribeTrades(builder => builder.Add(options.ClassCode, options.SecCode));
+client.StartTrades(new TradeHandler());
+
 if (options.PlaceDemoOrder)
 {
     newOrderResult = await SendTransactionAsync(client, new QuikNewOrder
